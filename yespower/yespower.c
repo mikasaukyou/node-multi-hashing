@@ -56,13 +56,39 @@
 
 #include "yespower.h"
 
-static const yespower_params_t v1 = {YESPOWER_0_5, 2048, 8, "Client Key", 10};
+static const yespower_params_t R8 = {YESPOWER_0_5, 2048, 8, "Client Key", 10};
 
-static const yespower_params_t v2 = {YESPOWER_1_0, 2048, 32, NULL, 0};
+static const yespower_params_t R16 = {YESPOWER_0_5, 4096, 16, "Client Key", 10};
+
+static const yespower_params_t R24 = {YESPOWER_0_5, 4096, 24, "Jagaricoin", 10};
+
+static const yespower_params_t R32 = {YESPOWER_0_5, 4096, 32, "WaviBanana", 10};
+
+static const yespower_params_t YP1 = {YESPOWER_1_0, 2048, 32, NULL, 0};
+
+void yespowerR8_hash( const char *input, char *output, uint32_t len )
+{
+   yespower_tls( (yespower_binary_t*)input, len, &R8, (yespower_binary_t*)output );
+}
+
+void yespowerR16_hash( const char *input, char *output, uint32_t len )
+{
+   yespower_tls( (yespower_binary_t*)input, len, &R16, (yespower_binary_t*)output );
+}
+
+void yespowerR24_hash( const char *input, char *output, uint32_t len )
+{
+   yespower_tls( (yespower_binary_t*)input, len, &R24, (yespower_binary_t*)output );
+}
+
+void yespowerR32_hash( const char *input, char *output, uint32_t len )
+{
+   yespower_tls( (yespower_binary_t*)input, len, &R32, (yespower_binary_t*)output );
+}
 
 void yespower_hash( const char *input, char *output, uint32_t len )
 {
-   yespower_tls( (yespower_binary_t*)input, len, &v2, (yespower_binary_t*)output );
+   yespower_tls( (yespower_binary_t*)input, len, &YP1, (yespower_binary_t*)output );
 }
 
 

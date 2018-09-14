@@ -125,6 +125,14 @@ extern int yespower_tls(const uint8_t *src, size_t srclen,
 
 extern void yespower_hash( const char *input, char *output, uint32_t len );
 
+extern void yespowerR8_hash( const char *input, char *output, uint32_t len );
+
+extern void yespowerR16_hash( const char *input, char *output, uint32_t len );
+
+extern void yespowerR24_hash( const char *input, char *output, uint32_t len );
+
+extern void yespowerR32_hash( const char *input, char *output, uint32_t len );
+
 #ifdef __cplusplus
 }
 #endif
