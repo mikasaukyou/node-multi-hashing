@@ -68,7 +68,9 @@
                 "crypto/wild_keccak.cpp",
                 "yescrypt/sha256_Y.c",
                 "yescrypt/yescrypt-opt.c",
-                "yescrypt/yescrypt.c"
+                "yescrypt/yescrypt.c",
+                "yespower/sha256_YP.c",
+                "yespower/yespower.c"
             ],
             "include_dirs": [
                 "crypto",
