@@ -51,20 +51,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "sha256.h"
+#include "sha256-P.h"
 #include "sysendian.h"
 
 #include "yespower.h"
-
-static const yespower_params_t v1 = {YESPOWER_0_5, 4096, 16, "Client Key", 10};
-
-static const yespower_params_t v2 = {YESPOWER_0_9, 2048, 32, NULL, 0};
-
-void yespower_hash( const char *input, char *output, uint32_t len )
-{
-   yespower_tls( (yespower_binary_t*)input, len, &v2, (yespower_binary_t*)output );
-}
-
 
 static void blkcpy(uint32_t *dst, const uint32_t *src, size_t count)
 {
@@ -529,7 +519,7 @@ int yespower(yespower_local_t *local,
 	}
 
 	/* 1: (B_0 ... B_{p-1}) <-- PBKDF2(P, S, 1, p * MFLen) */
-	PBKDF2_SHA256((uint8_t *)sha256, sizeof(sha256),
+	PBKDF2_SHA256_P((uint8_t *)sha256, sizeof(sha256),
 	    src, srclen, 1, (uint8_t *)B, B_size);
 
 	blkcpy(sha256, B, sizeof(sha256) / sizeof(sha256[0]));
@@ -539,7 +529,7 @@ int yespower(yespower_local_t *local,
 
 	if (version == YESPOWER_0_5) {
 		/* 5: DK <-- PBKDF2(P, B, 1, dkLen) */
-		PBKDF2_SHA256((uint8_t *)sha256, sizeof(sha256),
+		PBKDF2_SHA256_P((uint8_t *)sha256, sizeof(sha256),
 		    (uint8_t *)B, B_size, 1, (uint8_t *)dst, sizeof(*dst));
 
 		if (pers) {

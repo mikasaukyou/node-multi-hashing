@@ -56,16 +56,6 @@
 
 #include "yespower.h"
 
-static const yespower_params_t v1 = {YESPOWER_0_5, 4096, 16, "Client Key", 10};
-
-static const yespower_params_t v2 = {YESPOWER_0_9, 2048, 32, NULL, 0};
-
-void yespower_hash( const char *input, char *output, uint32_t len )
-{
-   yespower_tls( (yespower_binary_t*)input, len, &v2, (yespower_binary_t*)output );
-}
-
-
 static void blkcpy(uint32_t *dst, const uint32_t *src, size_t count)
 {
 	do {

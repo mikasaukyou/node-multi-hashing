@@ -43,8 +43,9 @@ extern "C" {
     #include "zr5.h"
     #include "yescrypt/yescrypt.h"
     #include "yescrypt/sha256_Y.h"
+    #include "yespower/sha256.h"
     #include "yespower/yespower.h"
-    #include "yespower/sha256_yp.h"
+/*    #include "yespower/sha256.h"*/
 }
 
 #include "boolberry.h"
@@ -663,27 +664,6 @@ NAN_METHOD(yescrypt) {
 
 }
 
-NAN_METHOD(yescryptR8) {
-
-    if (info.Length() < 1)
-        return THROW_ERROR_EXCEPTION("You must provide one argument.");
-
-    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
-
-    if(!Buffer::HasInstance(target))
-        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
-
-    char * input = Buffer::Data(target);
-    char *output = (char*) malloc(sizeof(char) * 32);
-
-    uint32_t input_len = Buffer::Length(target);
-
-    yescryptR8_hash(input, output, input_len);
-
-    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
-
-}
-
 NAN_METHOD(yescryptR16) {
 
     if (info.Length() < 1)
@@ -700,27 +680,6 @@ NAN_METHOD(yescryptR16) {
     uint32_t input_len = Buffer::Length(target);
 
     yescryptR16_hash(input, output, input_len);
-
-    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
-
-}
-
-NAN_METHOD(yescryptR24) {
-
-    if (info.Length() < 1)
-        return THROW_ERROR_EXCEPTION("You must provide one argument.");
-
-    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
-
-    if(!Buffer::HasInstance(target))
-        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
-
-    char * input = Buffer::Data(target);
-    char *output = (char*) malloc(sizeof(char) * 32);
-
-    uint32_t input_len = Buffer::Length(target);
-
-    yescryptR24_hash(input, output, input_len);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 
@@ -768,26 +727,7 @@ NAN_METHOD(yespower) {
 
 }
 
-NAN_METHOD(yespowerR8) {
 
-    if (info.Length() < 1)
-        return THROW_ERROR_EXCEPTION("You must provide one argument.");
-
-    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
-
-    if(!Buffer::HasInstance(target))
-        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
-
-    char * input = Buffer::Data(target);
-    char *output = (char*) malloc(sizeof(char) * 32);
-
-    uint32_t input_len = Buffer::Length(target);
-
-    yespowerR8_hash(input, output, input_len);
-
-    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
-
-}
 
 NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("lyra2z").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(lyra2z)).ToLocalChecked());
@@ -818,12 +758,9 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("fresh").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(fresh)).ToLocalChecked());
     Nan::Set(target, Nan::New("neoscrypt").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(neoscrypt)).ToLocalChecked());
     Nan::Set(target, Nan::New("yescrypt").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescrypt)).ToLocalChecked());
-    Nan::Set(target, Nan::New("yescryptR8").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescryptR16)).ToLocalChecked());
     Nan::Set(target, Nan::New("yescryptR16").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescryptR16)).ToLocalChecked());
-    Nan::Set(target, Nan::New("yescryptR24").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescryptR16)).ToLocalChecked());
     Nan::Set(target, Nan::New("yescryptR32").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescryptR32)).ToLocalChecked());
-    Nan::Set(target, Nan::New("yespower").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescryptR16)).ToLocalChecked());
-    Nan::Set(target, Nan::New("yespowerR8").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescryptR16)).ToLocalChecked());
+    Nan::Set(target, Nan::New("yespower").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yespower)).ToLocalChecked());
 }
 
 NODE_MODULE(multihashing, init)

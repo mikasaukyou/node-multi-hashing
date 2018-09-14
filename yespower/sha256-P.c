@@ -30,9 +30,9 @@
 #include <string.h>
 
 #include "insecure_memzero.h"
-#include "sysendian_yp.h"
+#include "sysendian.h"
 
-#include "sha256_yp.h"
+#include "sha256-P.h"
 
 #ifdef __ICC
 /* Miscompile with icc 14.0.0 (at least), so don't use restrict there */
@@ -526,12 +526,12 @@ SHA256_Pad_Almost(SHA256_CTX * ctx, uint8_t len[static restrict 8],
 }
 
 /**
- * PBKDF2_SHA256(passwd, passwdlen, salt, saltlen, c, buf, dkLen):
+ * PBKDF2_SHA256_P(passwd, passwdlen, salt, saltlen, c, buf, dkLen):
  * Compute PBKDF2(passwd, salt, c, dkLen) using HMAC-SHA256 as the PRF, and
  * write the output to buf.  The value dkLen must be at most 32 * (2^32 - 1).
  */
 void
-YESPOWER_PBKDF2_SHA256(const uint8_t * passwd, size_t passwdlen, const uint8_t * salt,
+PBKDF2_SHA256_P(const uint8_t * passwd, size_t passwdlen, const uint8_t * salt,
     size_t saltlen, uint64_t c, uint8_t * buf, size_t dkLen)
 {
 	HMAC_SHA256_CTX Phctx, PShctx, hctx;
