@@ -148,11 +148,10 @@ void lyra2revc0ban_hash(const char* input, char* output, uint32_t len)
 	sph_skein256_context ctx_skein;
 	sph_bmw256_context ctx_bmw;
 
-	uint32_t hashA[8], hashB[8];
+	uint32_t hashA[8], hashB[8]; // 256 bytes
 
-	sph_blake256_set_rounds(14);
 	sph_blake256_init(&ctx_blake);
-    sph_blake256(&ctx_blake, input, len);
+    sph_blake256(&ctx_blake, input, 80);
     sph_blake256_close (&ctx_blake, hashA);
 
     sph_cubehash256_init(&ctx_cubehash);
