@@ -117,6 +117,7 @@ DECLARE_CALLBACK(lyra2re, lyra2re_hash, 32);
 DECLARE_CALLBACK(lyra2re2, lyra2re_hash, 32);
 DECLARE_CALLBACK(lyra2rev2, lyra2rev2_hash, 32);
 DECLARE_CALLBACK(lyra2rev3, lyra2rev3_hash, 32);
+DECLARE_CALLBACK(lyra2revc0ban, lyra2revc0ban_hash, 32);
 DECLARE_CALLBACK(lyra2z, lyra2z_hash, 32);
 DECLARE_CALLBACK(lyra2z16m330, lyra2z16m330_hash, 32);
 DECLARE_CALLBACK(lyra2z330, lyra2z330_hash, 32);
@@ -570,6 +571,7 @@ NAN_MODULE_INIT(init)
     NAN_EXPORT(target, lyra2re2);
     NAN_EXPORT(target, lyra2rev2);
     NAN_EXPORT(target, lyra2rev3);
+    NAN_EXPORT(target, lyra2revc0ban);
     NAN_EXPORT(target, lyra2z);
     NAN_EXPORT(target, lyra2z16m330);
     NAN_EXPORT(target, lyra2z330);
