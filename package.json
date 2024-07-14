@@ -32,7 +32,11 @@
         "blake",
         "shavite",
         "fugue",
-        "sha1"
+        "sha1",
+        "yescrypt",
+        "yespower",
+        "lyra2re2",
+        "c0ban"
     ],
     "devDependencies": {
     },
