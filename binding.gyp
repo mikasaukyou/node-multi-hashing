@@ -21,6 +21,7 @@
                 "src/keccak.c",
                 "src/lbry.c",
                 "src/lyra2re.c",
+		"src/Lyra2REVc0ban.c"
                 "src/lyra2z.c",
                 "src/lyra2z16m330.c",
                 "src/lyra2z330.c",
