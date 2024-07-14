@@ -1,9 +1,9 @@
-#include "Lyra2RE.h"
+#include "lyra2re.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
-#include "Lyra2.h"
+#include "lyra2.h"
 
 void lyra2revc0ban_hash(const char* input, char* output)
 {
