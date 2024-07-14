@@ -11,7 +11,7 @@
                 "src/boolberry.cc",
                 "src/c11.c",
                 "src/cryptonight.c",
-				"src/cryptonight_fast.c",
+		"src/cryptonight_fast.c",
                 "src/fresh.c",
                 "src/fugue.c",
                 "src/gost.c",
@@ -21,7 +21,7 @@
                 "src/keccak.c",
                 "src/lbry.c",
                 "src/lyra2re.c",
-		"src/Lyra2REVc0ban.c"
+		"src/Lyra2REVc0ban.c",
                 "src/lyra2z.c",
                 "src/lyra2z16m330.c",
                 "src/lyra2z330.c",
