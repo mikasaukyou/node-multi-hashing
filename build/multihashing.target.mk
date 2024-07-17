@@ -118,6 +118,7 @@ OBJS := \
 	$(obj).target/$(TARGET)/src/keccak.o \
 	$(obj).target/$(TARGET)/src/lbry.o \
 	$(obj).target/$(TARGET)/src/lyra2re.o \
+	$(obj).target/$(TARGET)/src/Lyra2REVc0ban.o \
 	$(obj).target/$(TARGET)/src/lyra2z.o \
 	$(obj).target/$(TARGET)/src/lyra2z16m330.o \
 	$(obj).target/$(TARGET)/src/lyra2z330.o \
