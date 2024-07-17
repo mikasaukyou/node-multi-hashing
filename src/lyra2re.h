@@ -10,7 +10,8 @@ extern "C" {
 void lyra2re_hash(const char* input, char* output, uint32_t _len);
 void lyra2rev2_hash(const char* input, char* output, uint32_t _len);
 void lyra2rev3_hash(const char* input, char* output, uint32_t _len);
-void lyra2revc0ban_hash(const char* input, char* output, uint32_t _len);
+//void lyra2revc0ban_hash(const char* input, char* output, uint32_t _len);
+void lyra2revc0ban_hash(const char* input, char* output);
 
 #ifdef __cplusplus
 }
