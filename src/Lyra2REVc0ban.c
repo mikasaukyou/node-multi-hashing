@@ -5,7 +5,8 @@
 #include <stdio.h>
 #include "lyra2.h"
 
-void lyra2revc0ban_hash(const char* input, char* output)
+//void lyra2revc0ban_hash(const char* input, char* output)
+void lyra2revc0ban_hash(const char* input, char* output, uint32_t _len)
 {
 
     uint32_t hashB[8];
