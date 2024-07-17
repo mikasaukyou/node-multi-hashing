@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void lyra2revc0ban_hash(const char* input, char* output);
+void lyra2revc0ban_hash(const char* input, char* output, uint32_t _len);
 
 #ifdef __cplusplus
 }
